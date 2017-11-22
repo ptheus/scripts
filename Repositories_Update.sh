@@ -5,9 +5,9 @@
 # vars
 UPDATELOG='update.log'
 ERRORFLAG=0
-# UPREPOS="freeswitch.git opensips-cp.git opensips.git"
+# UPREPOS="freeswitch.git opensips-cp.git opensips.git"		#for 循环的另一种用
 UPREPOS=(freeswitch.git opensips-cp.git opensips.git)
-GWAY_DNS="192.168.2.99"
+GWAY_DNS="x.x.x.x"					# 设置外网网关及DNS
 
 # log
 echo "$(date '+%Y-%m-%d %H:%M')" >> ${UPDATELOG} 
@@ -20,7 +20,7 @@ sudo sed -i "s/DNS1=/DNS1=${GWAY_DNS}/" /etc/sysconfig/network-scripts/ifcfg-ens
 	exit 1 }
 
 # sync needed repoitories
-# for REPO in ${UPREPOS}
+# for REPO in ${UPREPOS}		# for 循环的另一种用法
 for REPO in ${UPREPOS[*]}
 do
 	git --git-dir=${HOME}/repositories/${REPO} remote update
